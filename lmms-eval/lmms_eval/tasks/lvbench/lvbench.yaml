@@ -1,0 +1,29 @@
+dataset_path: /mnt/storage/LongVideoHaystack/.cache/huggingface/lvbench
+dataset_kwargs:
+  data_files: {"test": "include_frame_idx_lvbench.json"}
+  token: False
+  cache_dir: lvbench
+  video: False
+test_split: test
+task: lvbench
+output_type: generate_until
+doc_to_visual: !function utils.lvbench_doc_to_visual
+doc_to_text: !function utils.lvbench_doc_to_text
+doc_to_target: "answer"
+generation_kwargs:
+  max_new_tokens: 16
+  temperature: 0
+  top_p: 1.0
+  num_beams: 1
+  do_sample: false
+process_results: !function utils.lvbench_process_results
+metric_list:
+  - metric: lvbench_score
+    aggregation: mean
+    higher_is_better: true
+lmms_eval_specific_kwargs:
+  default:
+    pre_prompt: ""
+    post_prompt: "\nAnswer the question with the option letter."
+metadata:
+  - version: 0.0

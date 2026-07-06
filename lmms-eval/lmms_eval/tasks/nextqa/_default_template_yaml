@@ -1,0 +1,10 @@
+dataset_path: /mnt/storage/LongVideoHaystack/.cache/huggingface/nextqa
+
+dataset_kwargs:
+  data_files: {"test": "/mnt/storage/LongVideoHaystack/.cache/huggingface/nextqa/include_frame_idx_20251214004242.json"}
+  token: True
+  video: True
+  cache_dir: nextqa
+metadata:
+  version: 0.0.1
+  load_package: True
